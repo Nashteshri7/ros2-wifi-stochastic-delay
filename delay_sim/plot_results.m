@@ -1,4 +1,4 @@
-
+%% Plot of the results of the simulation
 close
 clear
 clc
