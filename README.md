@@ -31,13 +31,8 @@ ros2-wifi-stochastic-delay/
 │       └── delay_est/     # ROS2 package for OWD estimation
 │
 ├── delay_anl/             # Python analysis tools
-│   ├── data/              # Experimental CSV Datasets
-│   │   ├── ping-pong/     # RTT validation tests
-│   │   ├── one-to-one/    # Baseline OWD tests
-│   │   ├── one-to-many/   # Scalability tests (1to2 ... 1to10)
-│   │   ├── payload/       # Load tests (50-joints, 40x35 ... 320x280)
-│   │   └── disturbance/   # Congestion tests
-│   └── data_analysis.py   # Main analysis script
+│   ├── data.zip           # Compressed Experimental Datasets (Unzip required!)
+│   └── data_analysis.py   # Analysis script
 │
 └── delay_sim/             # MATLAB Simulink Application
     ├── load_parameters.m  # Parameter initialization script
@@ -77,10 +72,13 @@ ros2 run delay_est receiver
 *Note: Ensure NTP synchronization is active between nodes before running measurements.*
 
 ### 2. Statistical Analysis (Python)
-The `delay_anl` folder contains the raw `.csv` data organized by test scenario. The Python environment is managed via **Anaconda**.
+The `delay_anl` folder contains the experimental datasets compressed in **`data.zip`** (to comply with GitHub file size limits). The Python environment is managed via **Anaconda**.
 
 ```bash
 cd delay_anl
+
+# Unzip the datasets
+unzip data.zip
 
 # Create and activate environment (Recommended)
 conda create -n ros2-wifi-analysis python=3.9
