@@ -11,9 +11,9 @@
 
 ## 📖 Overview
 
-This repository contains the source code, experimental datasets, and simulation models developed to characterize the impact of **Wi-Fi 6 (IEEE 802.11ax)** latency on **ROS2-based Networked Control Systems (NCS)**.
+This repository contains the source code, experimental datasets, and simulation models developed to characterize the impact of Wi-Fi 6 (IEEE 802.11ax) latency on ROS2-based Networked Control Systems (NCS).
 
-The project follows a **black-box approach** to derive a stochastic model of the One-Way Delay (OWD) and evaluates its effects on the stability of an industrial robot manipulator (ABB IRB120) using MATLAB Simulink.
+The project follows an empirical black-box approach to derive a stochastic model of the One-Way Delay (OWD) and evaluates its effects on the stability of an industrial robot manipulator (ABB IRB120) using MATLAB Simulink.
 
 ### Key Features
 * **Real-world Testbed:** C++ ROS2 package (`delay_est`) for measuring OWD with NTP synchronization.
@@ -73,7 +73,7 @@ ros2 run delay_est receiver
 *Note: Ensure NTP synchronization is active between nodes before running measurements.*
 
 ### 2. Statistical Analysis (Python)
-The `delay_anl` folder contains the experimental datasets compressed in **`data.zip`** and the analysis scripts. The Python environment is managed via **Anaconda**.
+The `delay_anl` folder contains the experimental datasets compressed in `data.zip` and the analysis scripts. The Python environment is managed via Anaconda.
 
 To replicate the exact analysis environment, a frozen `environment.yml` file is provided.
 
@@ -111,9 +111,9 @@ python3 data_analysis.py
 
 ## 📊 Key Results
 
-* **Distribution & Payload Dependency:** For typical control traffic (small payloads), the OWD follows a **Log-normal distribution**, characterized by heavy tails. As the payload size increases, the distribution shape evolves, transitioning towards a **central distribution**.
+* **Distribution & Payload Dependency:** For typical control traffic (small payloads), the OWD follows a Lognormal distribution, characterized by heavy tails. As the payload size increases, the distribution shape evolves, transitioning towards a central distribution.
 * **Asymmetry:** The channel is statistically asymmetric ($OWD_{AB} \neq OWD_{BA}$).
-* **Impact:** Introducing the stochastic delay model in the control loop causes a violation of the phase margin, leading to **instability** in the standard PD controller.
+* **Impact:** Introducing the stochastic delay model in the control loop causes a violation of the phase margin, leading to instability in the standard PD controller.
 
 ---
 
